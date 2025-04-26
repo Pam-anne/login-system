@@ -1,5 +1,6 @@
 <?php
 
+
  require 'Database.php';
 
 $errors = [];
@@ -49,6 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Execute the query
         $user->execute();
+
+        #mark the user as logged in
+        $_SESSION['user'] = [
+            'email' => $email,
+        ];
 
         // Redirect to login page with success message
         header("Location: /");
